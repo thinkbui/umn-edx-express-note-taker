@@ -45,4 +45,15 @@ notes.post('/', (req, res) => {
   }
 });
 
+// notes.delete('/:note_id', (req, res) => {
+//   const noteId = req.params.note_id;
+//   readFromFile('./db/db.json')
+//     .then((data) => JSON.parse(data))
+//     .then((json) => {
+//       const result = json.filter((note) => note.note_id !== noteId);
+//       writeToFile('./db/db.json', result);
+//       res.json(`Item ${noteId} has been deleted 🗑️`);
+//     });
+// });
+
 module.exports = notes;
