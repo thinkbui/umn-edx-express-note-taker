@@ -1,6 +1,7 @@
 const notes = require('express').Router();
 const fs = require('fs');
 const util = require('util');
+const { v4: uuidv4 } = require('uuid');
 
 notes.get('/', (req, res) => {
   fs.readFile('./db/db.json', 'utf8', (error, data) =>
@@ -13,8 +14,9 @@ notes.post('/', (req, res) => {
   const { title, text } = req.body;
   if (title && text) {
     const newNote = {
-      title,
-      text
+      title: title,
+      text: text,
+      note_id: uuidv4()
     };
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
