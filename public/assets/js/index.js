@@ -83,6 +83,7 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
+  // Updated to reference new dataset value
   const noteId = note.parentElement.getAttribute('data-id');
 
   if (activeNote.id === noteId) {

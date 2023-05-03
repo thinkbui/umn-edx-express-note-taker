@@ -52,6 +52,8 @@ notes.post('/', (req, res) => {
   }
 });
 
+// This is the DELETE /api/notes/:note_id endpoint
+// It takes the ID of the note, loads all notes into memory, filters only notes with non-matching IDs, then saves the filtered data back to db.json
 notes.delete('/:note_id', (req, res) => {
   console.info(`${req.method} request received to delete a note`);
   const noteId = req.params.note_id;
