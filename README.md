@@ -9,6 +9,8 @@ On the left side, a list of all existing notes.  When one is clicked, its conten
 
 To clear the right side fields of an existing note content or to simply clear those fields of anything entered, click the '+' icon above will reset the field.
 
+To delete a note, click on the red trash can icon next to its title on the left.
+
 ## NOTES
 This was intended as a study of how front-end JS and NodeJS/ExpressJS interact, so only a crude database was used.  Since the only one "table" as such is needed for this app, the data is stored as an array of objects/hashmaps in a JSON file.  This app isn't intended to be used by a large number of users making multiple simultaneous changes.
 
