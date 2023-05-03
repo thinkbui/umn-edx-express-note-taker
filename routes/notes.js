@@ -52,15 +52,39 @@ notes.post('/', (req, res) => {
   }
 });
 
-// notes.delete('/:note_id', (req, res) => {
-//   const noteId = req.params.note_id;
-//   readFromFile('./db/db.json')
-//     .then((data) => JSON.parse(data))
-//     .then((json) => {
-//       const result = json.filter((note) => note.note_id !== noteId);
-//       writeToFile('./db/db.json', result);
-//       res.json(`Item ${noteId} has been deleted 🗑️`);
-//     });
-// });
+// This is the DELETE /api/notes/:note_id endpoint
+// It takes the ID of the note, loads all notes into memory, filters only notes with non-matching IDs, then saves the filtered data back to db.json
+notes.delete('/:note_id', (req, res) => {
+  console.info(`${req.method} request received to delete a note`);
+  const noteId = req.params.note_id;
+  if (noteId) {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        const parsedNotes = JSON.parse(data);
+        const updatedNotes = parsedNotes.filter(note => note.note_id != noteId)
+        fs.writeFile(
+          './db/db.json',
+          JSON.stringify(updatedNotes, null, 4),
+          (writeErr) =>
+            writeErr
+              ? console.error(writeErr)
+              : console.info('Successfully updated notes!')
+        );
+      }
+    });
+
+    const response = {
+      status: 'success',
+      body: noteId,
+    };
+
+    console.log(response);
+    res.status(201).json(response);
+  } else {
+    res.status(500).json('Error in deleting note');
+  }
+});
 
 module.exports = notes;
