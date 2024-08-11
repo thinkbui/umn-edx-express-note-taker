@@ -17,7 +17,7 @@ This was intended as a study of how front-end JS and NodeJS/ExpressJS interact, 
 The limits of the app are also unknown at this point as the maximum length of each note as well as the number of notes that the database can hold has not be determined.
 
 ## LIVE VIEW
-This note taker can be viewed here: https://pure-thicket-80004.herokuapp.com/
+This note taker can be viewed here: https://umn-edx-express-note-taker.herokuapp.com/
 
 Homepage
 ![Homepage](./public/assets/images/screenshot_index.png)
